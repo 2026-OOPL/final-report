@@ -31,17 +31,49 @@
 1. 
 
 ## 遊戲介紹
+玩家需要操控角色 Knight 一路過關斬將，雖然無法相關羽那樣過五關斬六將，但至少也有過九關展三將。
+遊戲關卡分成三個章，每張共有三小節，且在每個章的最後一個小節設有章節 Boss。
+玩家會需要穿越一個又一個隨機生成的房間，並清空房間內的有小怪，最後抵達到藍色傳送門房間進入下一關。
+如果在遊戲中途死亡，可以選擇觀看 37 秒的廣告復活，助各位有個美好的遊戲夜晚。
 
 ### 遊戲規則
+#### 操作
+| Key | Function |
+| --- | --- |
+| `W` | 向上移動 |
+| `A` | 向左移動 |
+| `S` | 向下移動 |
+| `D` | 向右移動 |
+| `Space` | Hold to melee attack when close to a target; otherwise fire the current weapon |
+| `Q` | Switch between the two carried weapons |
+| `E` | Pick up a dropped weapon when standing near it; if both weapon slots are full, drop the current weapon |
+| `T` | Toggle invincible mode; while enabled, the player takes no damage and weapon ammo is not consumed |
+| `LMB` | Click menu buttons |
+| `Esc` | 暫停遊戲 |
+
+#### Debug 功能
+
+#### 數值介紹
+遊玩介面有三個數值要注意，他們皆顯示在螢幕的左上角。
+1. 生命值 (<img src="assets/bar_health.png" alt="Health Bar" style=" height: 12px;">)：玩家目前的血量，如果歸零會導致廣告的推送。血量不會隨時間回復，唯一的回寫方式是觀賞 37 秒的影片。
+2. 護盾值 (<img src="assets/bar_shield.png" alt="Shield Bar" style=" height: 12px;">)：當護盾直不為 0 時，會吸收所有玩家受到的傷害並扣除 1 點，如果沒有護盾值則會直接扣血。護盾值在沒有受到傷害時會逐漸回復。
+3. 能量值 (<img src="assets/bar_mana.png" alt="Health Bar" style=" height: 12px;">)：能量值可以用來發射武器的子彈，當能量值規零時則無法使用會消耗能量值的武器。如果您遇到此情況，請直接跑到怪物旁邊，這會切換到不會消耗能量的近戰手刀。
 
 ### 遊戲畫面
-![MainMenu](assets/mainmenu.png)
-![Gameplay](assets/gameplay.png)
+<img src="assets/mainmenu.png" alt="MainMenu" style="max-width: 480px; width: 100%; display: inline;">
+<img src="assets/gameplay.png" alt="Gameplay" style="max-width: 480px; width: 100%;">
 
 ## 程式設計
 ### 程式架構
 #### 場景概念 (Scene)
 遊戲中所有的畫面都是由 Scene 支撐，從初始介面到遊玩場景甚至是最後的鳴謝清單。且 GameLoop 會不斷詢問目前的 Scene 是否有切換場景的需求，以此實現場景切換的功能。
+
+<style>
+  .mermaid svg {
+    max-width: 300% !important; /* Adjust percentage to resize */
+    height: 300px;
+  }
+</style>
 
 ```mermaid
 classDiagram
@@ -411,12 +443,12 @@ classDiagram
 
 | 項次 | 項目                   | 完成 |
 |------|------------------------|-------|
-| 1    | 這是範例 |  V  |
-| 2    | 完成專案權限改為 public |    |
-| 3    | 具有 debug mode 的功能  |    |
-| 4    | 解決專案上所有 Memory Leak 的問題  |    |
-| 5    | 報告中沒有任何錯字，以及沒有任何一項遺漏  |    |
-| 6    | 報告至少保持基本的美感，人類可讀  |    |
+| 1    | 這是範例                             | <input type="checkbox" checked>   |
+| 2    | 完成專案權限改為 public               | <input type="checkbox" checked>   |
+| 3    | 具有 debug mode 的功能               | <input type="checkbox" checked>   |
+| 4    | 解決專案上所有 Memory Leak 的問題      | <input type="checkbox" checked>   |
+| 5    | 報告中沒有任何錯字，以及沒有任何一項遺漏  | <input type="checkbox" checked>   |
+| 6    | 報告至少保持基本的美感，人類可讀         | <input type="checkbox" checked>   |
 
 ### 心得
 ### 貢獻比例
