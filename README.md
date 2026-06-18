@@ -28,8 +28,10 @@
 7. 相機系統製作
 
 #### 朱政全
-1. 
-
+1. 碰撞箱製作
+2. 小怪製作製作
+3. boos製作
+4. 武器製作
 ## 遊戲介紹
 玩家需要操控角色 Knight 一路過關斬將，雖然無法相關羽那樣過五關斬六將，但至少也有過九關展三將。
 遊戲關卡分成三個章，每張共有三小節，且在每個章的最後一個小節設有章節 Boss。
@@ -44,18 +46,24 @@
 | `A` | 向左移動 |
 | `S` | 向下移動 |
 | `D` | 向右移動 |
-| `Space` | Hold to melee attack when close to a target; otherwise fire the current weapon |
-| `Q` | Switch between the two carried weapons |
-| `E` | Pick up a dropped weapon when standing near it; if both weapon slots are full, drop the current weapon |
-| `T` | Toggle invincible mode; while enabled, the player takes no damage and weapon ammo is not consumed |
-| `LMB` | Click menu buttons |
+| `Space` | 射擊 |
+| `Q` | 換武器|
+| `E` | 撿起武器|
+| `LMB` | 點按鈕 |
 | `Esc` | 暫停遊戲 |
+
+#### 除錯模式
+| Key | Function |
+| :-- | :------- |
+| ``R`` | 開啟碰撞箱顯示 |
+| ``T`` | 鎖血 + 武器不消耗能量 |
+| ``P`` | 清除當前房間的怪物 (包含 Boss) | 
 
 #### Debug 功能
 
 #### 數值介紹
 遊玩介面有三個數值要注意，他們皆顯示在螢幕的左上角。
-1. 生命值 (<img src="assets/bar_health.png" alt="Health Bar" style=" height: 12px;">)：玩家目前的血量，如果歸零會導致廣告的推送。血量不會隨時間回復，唯一的回寫方式是觀賞 37 秒的影片。
+1. 生命值 (<img src="assets/bar_health.png" alt="Health Bar" style=" height: 12px;">)：玩家目前的血量，如果歸零會導致廣告的推送。血量不會隨時間回復，唯一的回血方式是觀賞 37 秒的影片。
 2. 護盾值 (<img src="assets/bar_shield.png" alt="Shield Bar" style=" height: 12px;">)：當護盾直不為 0 時，會吸收所有玩家受到的傷害並扣除 1 點，如果沒有護盾值則會直接扣血。護盾值在沒有受到傷害時會逐漸回復。
 3. 能量值 (<img src="assets/bar_mana.png" alt="Health Bar" style=" height: 12px;">)：能量值可以用來發射武器的子彈，當能量值規零時則無法使用會消耗能量值的武器。如果您遇到此情況，請直接跑到怪物旁邊，這會切換到不會消耗能量的近戰手刀。
 
@@ -294,9 +302,7 @@ classDiagram
     class IndestructibleObstacle
     class Portal
   }
-  namespace External {
-    class Util_GameObject
-  }
+
   BlockingProp <|-- Chest
   BlockingProp <|-- IndestructibleObstacle
   IChestReward <|-- ConsumableChestReward
@@ -308,7 +314,6 @@ classDiagram
   Prop <|-- BlockingProp
   Prop <|-- DroppedWeapon
   Prop <|-- Portal
-  Util_GameObject <|-- Prop
 ```
 
 #### 武器與子彈系統
@@ -349,16 +354,11 @@ classDiagram
     class Plunger
     class AK47
   }
-  namespace External {
-    class Util_GameObject
-  }
+
   Bullet <|-- ConfiguredBullet
   Bullet <|-- SpinningBullet
   Bullet <|-- TestBullet
   ConfiguredBullet <|-- TimedBullet
-  Util_GameObject <|-- Bullet
-  Util_GameObject <|-- ShearAttackEffect
-  Util_GameObject <|-- Weapon
   Weapon <|-- AK47
   Weapon <|-- BadPistol
   Weapon <|-- Bow
@@ -413,9 +413,7 @@ classDiagram
     }
     class PortalRoom
   }
-  namespace External {
-    class Util_GameObject
-  }
+
   BaseRoom <|-- FightRoom
   BaseRoom <|-- PortalRoom
   BaseRoom <|-- RewardRoom
@@ -429,7 +427,6 @@ classDiagram
   MapPiece <|-- RectMapArea
   RectMapArea <|-- BaseRoom
   RectMapArea <|-- Gangway
-  Util_GameObject <|-- MapPiece
 ```
 
 ### 程式技術
@@ -439,8 +436,8 @@ classDiagram
 ## 結語
 
 ### 問題與解決方法
-### 自評
 
+### 自評
 | 項次 | 項目                   | 完成 |
 |------|------------------------|-------|
 | 1    | 這是範例                             | <input type="checkbox" checked>   |
