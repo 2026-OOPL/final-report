@@ -73,14 +73,6 @@
 ### 程式架構
 #### 場景概念 (Scene)
 遊戲中所有的畫面都是由 Scene 支撐，從初始介面到遊玩場景甚至是最後的鳴謝清單。且 GameLoop 會不斷詢問目前的 Scene 是否有切換場景的需求，以此實現場景切換的功能。
-
-<style>
-  .mermaid svg {
-    max-width: 300% !important; /* Adjust percentage to resize */
-    height: 300px;
-  }
-</style>
-
 ```mermaid
 classDiagram
   namespace AppRoot {
@@ -438,12 +430,15 @@ classDiagram
 ### 自評
 | 項次 | 項目                   | 完成 |
 |------|------------------------|-------|
-| 1    | 這是範例                             | <input type="checkbox" checked>   |
-| 2    | 完成專案權限改為 public               | <input type="checkbox" checked>   |
-| 3    | 具有 debug mode 的功能               | <input type="checkbox" checked>   |
-| 4    | 解決專案上所有 Memory Leak 的問題      | <input type="checkbox" checked>   |
-| 5    | 報告中沒有任何錯字，以及沒有任何一項遺漏  | <input type="checkbox" checked>   |
-| 6    | 報告至少保持基本的美感，人類可讀         | <input type="checkbox" checked>   |
+| 1    | 這是範例                                 | v   |
+| 2    | 完成專案權限改為 public                  | v   |
+| 3    | 具有 debug mode 的功能                   | v   |
+| 4    | 解決專案上所有 Memory Leak 的問題        | v   |
+| 5    | 報告中沒有任何錯字，以及沒有任何一項遺漏 | v   |
+| 6    | 報告至少保持基本的美感，人類可讀         | v   |
 
 ### 心得
+#### 邱冠勛
+這次的 OOPL 專案可說是我人生中第一次長時間且有目標的與其他成員共同開發一個程式，
+
 ### 貢獻比例
